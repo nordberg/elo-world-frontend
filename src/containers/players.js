@@ -1,10 +1,10 @@
 import React from 'react'
 
-const About = () => (
+const Players = () => (
   <div>
-    <h1>About Us</h1>
+    <h1>Manage players</h1>
     <p>Hello TriOptima!</p>
   </div>
 )
 
-export default About
+export default Players
