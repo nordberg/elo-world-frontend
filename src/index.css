@@ -26,6 +26,24 @@ header {
   background-color: var(--color-primary);
 }
 
+input {
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button {
+  border-radius: 5px;
+  background-color: var(--color-tertiary);
+  color: white;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
+button:hover{
+  color: lightgrey;
+}
+
 .header-content {
   margin: 0 auto;
   width: var(--page-width);
@@ -50,4 +68,8 @@ header {
   color: var(--color-secondary);
   font-size: 2rem;
   font-weight: 300;
+}
+
+.player-input{
+  margin-right: 0.5rem;
 }
