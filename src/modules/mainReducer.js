@@ -51,10 +51,11 @@ function handleAddPlayer(state, payload) {
 }
 
 function handleGetPlayersSuccess(state, payload) {
-  const { players } = payload
+  console.log(payload)
+  const { users } = payload
   return {
     ...state,
-    players
+    players: users
   }
 }
 
