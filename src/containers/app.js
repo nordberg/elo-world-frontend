@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import Home from 'containers/home'
 import Players from 'containers/players'
+import { hot } from 'react-hot-loader'
 
 const Header = () => (
   <header>
@@ -22,4 +23,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default hot(module)(App)
