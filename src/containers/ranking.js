@@ -24,8 +24,8 @@ const RankingHeader = (props) => (
 )
 
 const sportNameById = {
-  '8ball': '8-ball',
-  'tableTennis': 'Table tennis'
+  '1': 'Table tennis',
+  '2': '8-ball'
 }
 
 const Ranking = (props) => {

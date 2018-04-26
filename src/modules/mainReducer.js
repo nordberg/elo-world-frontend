@@ -1,6 +1,7 @@
 import {
   ADD_PLAYER,
   GET_PLAYERS_SUCCESS,
+  GET_ELO_SUCCESS,
   INIT
 } from 'modules/actions'
 
@@ -8,7 +9,7 @@ const initialState = {
   players: [],
   playerRankings:
     {
-      '8ball':
+      '1':
         [
           {
             name: 'Foo von Bar',
@@ -19,7 +20,7 @@ const initialState = {
             elo: 500
           }
         ],
-      'tableTennis':
+      '2':
         [
           {
             name: 'Mr. Placeholder',
@@ -57,6 +58,15 @@ function handleGetPlayersSuccess(state, payload) {
   }
 }
 
+function handleEloSuccess(state, payload) {
+  console.log(payload)
+  const { elo } = payload
+  return {
+    ...state,
+    elo
+  }
+}
+
 function mainReducer(state = initialState, {type, payload}) {
   switch (type) {
     case ADD_PLAYER: {
@@ -64,6 +74,9 @@ function mainReducer(state = initialState, {type, payload}) {
     }
     case GET_PLAYERS_SUCCESS: {
       return handleGetPlayersSuccess(state, payload)
+    }
+    case GET_ELO_SUCCESS: {
+      return handleEloSuccess(state, payload)
     }
     case INIT: {
       return initialState
