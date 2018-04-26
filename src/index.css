@@ -42,7 +42,7 @@ button {
   cursor: pointer;
 }
 
-button:hover{
+button:hover {
   color: lightgrey;
 }
 
@@ -73,6 +73,32 @@ button:hover{
   text-shadow: 4px 2px var(--color-tertiary);
 }
 
-.player-input{
+.player-input {
   margin-right: 0.5rem;
+}
+
+/*.ranking-table {*/
+  /*width: 60%;*/
+/*}*/
+
+.ranking-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-bottom: 0.2rem;
+}
+
+.ranking-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid lightgray;
+}
+
+.ranking {
+  margin-top: 5rem;
+  width: 45%;
+}
+
+.rankings {
+  display: flex;
+  justify-content: space-between;
 }
