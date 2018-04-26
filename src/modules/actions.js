@@ -13,9 +13,7 @@ export function addPlayer(name) {
 
 export function getPlayers() {
   return (dispatch) => {
-    console.log("hej")
     fetchPlayers().then(response => {
-      console.log("response", response)
       dispatch(getPlayersSuccess(response))
     })
   }
@@ -30,21 +28,21 @@ function getPlayersSuccess(payload) {
 
 export function getElo(sportId) {
   return (dispatch) => {
+    console.log("fetch elo", sportId)
     fetchElo(sportId).then(response => {
+      console.log("elo response", response)
       dispatch(getEloSuccess(response))
-    }
+    })
   }
 }
 
 export function submitMatch(payload) {
   return (dispatch) => {
-    console.log("payload", payload)
     const data = {
       ...payload,
       score_1: parseInt(payload.score_1),
       score_2: parseInt(payload.score_2),
     }
-    console.log("data", data)
     createMatch(data).then(response => {
       dispatch(createMatchSuccess(response))
     })
@@ -54,6 +52,7 @@ export function submitMatch(payload) {
 function getEloSuccess(payload) {
   return {
     type: GET_ELO_SUCCESS,
+    payload
   }
 }
 

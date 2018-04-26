@@ -1,5 +1,6 @@
 import api from 'api'
 
 export function fetchElo(sportId) {
-  return api('/elo/' + sportId)
+  console.log("elo api", sportId)
+  return api('/elo/' + sportId + '/')
 }
