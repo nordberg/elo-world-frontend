@@ -4,7 +4,36 @@ import {
 } from 'modules/actions'
 
 const initialState = {
-  players: []
+  players: [],
+  playerRankings:
+    {
+      '8ball':
+        [
+          {
+            name: 'Foo von Bar',
+            elo: 2200
+          },
+          {
+            name: 'Pooldude',
+            elo: 500
+          }
+        ],
+      'tableTennis':
+        [
+          {
+            name: 'Mr. Placeholder',
+            elo: 1200
+          },
+          {
+            name: 'Ping Pong',
+            elo: 42
+          },
+          {
+            name: 'Lolfi Golfi',
+            elo: 1
+          }
+        ]
+    }
 }
 
 function handleAddPlayer(state, payload) {
