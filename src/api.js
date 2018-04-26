@@ -4,3 +4,16 @@ export default function api(endpoint, options = {}) {
     return response.json()
   })
 }
+
+export function post(endpoint, data) {
+  const url = '/api' + endpoint
+  const json = JSON.stringify(data)
+  console.log(json)
+  return fetch(url, {
+    body: json,
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  }).then(response => response.json())
+}

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { getPlayers, getElo } from "modules/actions";
 
 const RankingItem = (props) => {
   const {name, elo} = props.ranking
@@ -23,29 +24,42 @@ const RankingHeader = (props) => (
   </div>
 )
 
-const sportNameById = {
+ const sportNameById = {
   '1': 'Table tennis',
-  '2': '8-ball'
-}
+  '2': 'Eight-ball'
+ }
 
-const Ranking = (props) => {
-  const rankingItems = props.playerRankings.map((r, i) => (
-    <RankingItem index={i} ranking={r} key={r.name}/>
-  ))
+class Ranking extends Component {
 
-  return (
-    <div className="ranking">
-      <h2>{sportNameById[props.sport]}</h2>
-      <div className="ranking-table">
-        <RankingHeader/>
-        {rankingItems}
+  componentDidMount() {
+    this.props.fetchPlayers()
+    this.props.getEloById('1')
+    this.props.getEloById('2')
+  }
+  render() {
+    const rankingItems = this.props.playerRankings.map((r, i) => (
+      <RankingItem index={i} ranking={r} key={r.name}/>
+    ))
+
+    return (
+      <div className="ranking">
+        <h2>{sportNameById[this.props.sport]}</h2>
+        <div className="ranking-table">
+          <RankingHeader/>
+          {rankingItems}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {playerRankings: state.mainReducer.playerRankings[ownProps.sport]}
 }
 
-export default connect(mapStateToProps)(Ranking)
+const mapDispatchToProps = (dispatch) => ({
+  fetchPlayers: () => dispatch(getPlayers()),
+  getEloById: (id) => dispatch(getElo(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ranking)

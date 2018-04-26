@@ -1,5 +1,9 @@
-import api from 'api'
+import api, { post } from 'api'
 
 export function fetchPlayers() {
-  return api('/users')
+  return api('/users/')
+}
+
+export function createMatch(payload) {
+  return post('/matches/', payload)
 }

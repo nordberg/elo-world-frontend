@@ -51,19 +51,38 @@ function handleAddPlayer(state, payload) {
 }
 
 function handleGetPlayersSuccess(state, payload) {
-  const { players } = payload
+  console.log(payload)
+  const { users } = payload
   return {
     ...state,
-    players
+    players: users
   }
 }
 
 function handleEloSuccess(state, payload) {
-  console.log(payload)
-  const { elo } = payload
+  const userNameById = state.players.reduce((acc, user) => {
+    const id = user.id
+    const name = user.name
+    return {...acc, [id]: name}
+  }, {})
+
+  if (payload['elo'].length ==0) {
+    return state
+  }
+  const id = payload['elo'][0]['sport']
+  const elos = payload['elo'].map((elo) => (
+    {
+      'name': userNameById[elo.user],
+      'elo': elo.score
+    }
+  ))
+
   return {
     ...state,
-    elo
+    playerRankings: {
+      ...state.playerRankings,
+      [id]: elos
+    }
   }
 }
 
