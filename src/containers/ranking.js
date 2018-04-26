@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const RankingItem = (props) => {
   const {name, elo} = props.ranking
   const rank = props.index + 1
-  const rowClass = "ranking-row" + (rank % 2 == 0 ? " even-row" : "")
+  const rowClass = "ranking-row" + (rank % 2 === 0 ? " even-row" : "")
 
   return (
     <div className={rowClass}>
