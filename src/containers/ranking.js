@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 
 const RankingItem = (props) => {
   const {name, elo} = props.ranking
+  const rank = props.index + 1
+  const rowClass = "ranking-row" + (rank % 2 == 0 ? " even-row" : "")
 
   return (
-    <div className="ranking-row">
-      <div>{props.index + 1}</div>
+    <div className={rowClass}>
+      <div>{rank}</div>
       <div>{name}</div>
       <div>{elo}</div>
     </div>

@@ -31,6 +31,10 @@ const initialState = {
           {
             name: 'Lolfi Golfi',
             elo: 1
+          },
+          {
+            name: 'Golfi Lolfi',
+            elo: 1
           }
         ]
     }
